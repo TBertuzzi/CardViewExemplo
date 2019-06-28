@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+             BackgroundColor="Black"
+             mc:Ignorable="d" 
+             x:Class="CardViewExemplo.MainPage">
+    
+  <ContentPage.Resources>
+    <ResourceDictionary>
+        <Style x:Key="ActiveIndicator" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="Red" />
+        </Style>
+        <Style x:Key="InactiveIndicator" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="OutlineColor" Value="Red" />
+        </Style>
+    </ResourceDictionary>
+</ContentPage.Resources>
+    
+    <!-- CarouselView   -->
+    
+  <cards:CarouselView 
+    ItemsSource="{Binding Views}"
+      SlideShowDuration="3500"
+    SelectedIndex="{Binding Position}">
+    <cards:CarouselView.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                <Frame 
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    HeightRequest="300"
+                    WidthRequest="300"
+                    Padding="0" 
+                    HasShadow="false"
+                    IsClippedToBounds="true"
+                    BackgroundColor= "Black"
+                    CornerRadius="10">
+                    
+                    <Image Source="{Binding Source}"/> 
+                    
+                </Frame>
+            </ContentView>
+        </DataTemplate>
+    </cards:CarouselView.ItemTemplate>
+
+  <controls:IndicatorsControl ToFadeDuration="1500"
+            SelectedIndicatorStyle="{StaticResource ActiveIndicator}"
+          UnselectedIndicatorStyle="{StaticResource InactiveIndicator}" />
+        
+  <controls:LeftArrowControl ToFadeDuration="2500"/>
+  <controls:RightArrowControl ToFadeDuration="2500"/>
+</cards:CarouselView>
+    
+<!-- CardsView   -->
+    
+<!--<cards:CardsView 
+    ItemsSource="{Binding Views}"
+    SelectedIndex="{Binding Position}">
+    <cards:CardsView.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                    <Frame 
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    HeightRequest="300"
+                    WidthRequest="300"
+                    Padding="0" 
+                    HasShadow="false"
+                    IsClippedToBounds="true"
+                    BackgroundColor= "Black"
+                    CornerRadius="10">
+                    
+                    <Image Source="{Binding Source}"/> 
+                    
+                </Frame>
+            </ContentView>
+        </DataTemplate>
+    </cards:CardsView.ItemTemplate>
+    
+   <controls:IndicatorsControl ToFadeDuration="1500"
+            SelectedIndicatorStyle="{StaticResource ActiveIndicator}"
+          UnselectedIndicatorStyle="{StaticResource InactiveIndicator}" />
+        
+  <controls:LeftArrowControl ToFadeDuration="2500"/>
+  <controls:RightArrowControl ToFadeDuration="2500"/>
+        
+</cards:CardsView>
+    -->
+    
+<!-- CoverFlowView   -->
+    
+<!--<cards:CoverFlowView 
+    ItemsSource="{Binding Views}"
+    SelectedIndex="{Binding Position}"
+    
+    PositionShiftValue="60"
+    IsCyclical="true">
+        
+    <cards:CoverFlowView.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                    <Frame 
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    HeightRequest="300"
+                    WidthRequest="300"
+                    Padding="0" 
+                    HasShadow="false"
+                    IsClippedToBounds="true"
+                    BackgroundColor= "Black"
+                    CornerRadius="10">
+                    
+                    <Image Source="{Binding Source}"/> 
+                    
+                </Frame>
+            </ContentView>
+        </DataTemplate>
+    </cards:CoverFlowView.ItemTemplate>
+    
+        
+</cards:CoverFlowView>-->
+    
+<!-- CubeView   -->
+    
+<!--<cards:CubeView 
+    ItemsSource="{Binding Views}"
+    SelectedIndex="{Binding Position}">
+    
+    <cards:CubeView.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                    <Frame 
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    HeightRequest="300"
+                    WidthRequest="300"
+                    Padding="0" 
+                    HasShadow="false"
+                    IsClippedToBounds="true"
+                    BackgroundColor= "Black"
+                    CornerRadius="10">
+                    
+                    <Image Source="{Binding Source}"/> 
+                    
+                </Frame>
+            </ContentView>
+        </DataTemplate>
+    </cards:CubeView.ItemTemplate>
+    
+</cards:CubeView>-->
+    
+    
+</ContentPage>
