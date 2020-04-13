@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design" 
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
               xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
-             xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+             xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView"
              BackgroundColor="Black"
              mc:Ignorable="d" 
              x:Class="CardViewExemplo.MainPage">
@@ -23,7 +23,7 @@
     
     <!-- CarouselView   -->
     
-  <cards:CarouselView 
+  <!--<cards:CarouselView 
     ItemsSource="{Binding Views}"
       SlideShowDuration="3500"
     SelectedIndex="{Binding Position}">
@@ -54,7 +54,7 @@
         
   <controls:LeftArrowControl ToFadeDuration="2500"/>
   <controls:RightArrowControl ToFadeDuration="2500"/>
-</cards:CarouselView>
+</cards:CarouselView>-->
     
 <!-- CardsView   -->
     
@@ -153,6 +153,86 @@
     </cards:CubeView.ItemTemplate>
     
 </cards:CubeView>-->
+
+    <!-- ScaleFactor & OpacityFactor   -->
+    
+    <!--<cards:CoverFlowView 
+                PositionShiftValue="145"
+                IsCyclical="false"
+                SelectedIndex="{Binding Position}"
+                ItemsSource="{Binding Views}">
+
+                <x:Arguments>
+                    <proc:BaseCoverFlowFrontViewProcessor ScaleFactor="0.75" OpacityFactor="0.25" />
+                    <proc:BaseCoverFlowBackViewProcessor  ScaleFactor="0.75" OpacityFactor="0.25" />
+                </x:Arguments>
+
+            <cards:CoverFlowView.ItemTemplate>
+                <DataTemplate>
+                   <Frame
+                       Margin="80"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Fill"
+                       Padding="0" 
+                       HasShadow="false"
+                       IsClippedToBounds="true"
+                       CornerRadius="10">
+                         <Image Source="{Binding Source}"/> 
+                        </Frame>
+                </DataTemplate>
+            </cards:CoverFlowView.ItemTemplate>
+
+        </cards:CoverFlowView>-->
+
+
+     <StackLayout Spacing="50" Padding="0, 80, 0, 50">
+        <ContentView HeightRequest="40" HorizontalOptions="FillAndExpand">
+            <controls:TabsControl
+                StripeColor="Gold"
+                ToFadeDuration="2000"
+                HeightRequest="40"
+                BindingContext="{x:Reference cube}">
+                <controls:TabsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Label HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               TextColor="Gold"
+                               Text="{Binding Title}"/>
+
+                    </DataTemplate>
+                </controls:TabsControl.ItemTemplate>
+            </controls:TabsControl>
+        </ContentView>
+        <cards:CubeView
+                x:Name="cube"
+                VerticalOptions="FillAndExpand"
+                SelectedIndex="{Binding Position}"
+                ItemsSource="{Binding Items}">
+            <cards:CubeView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView>
+                        <Frame 
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            HeightRequest="300"
+                            WidthRequest="300"
+                            Padding="0" 
+                            HasShadow="false"
+                            IsClippedToBounds="true"
+                            CornerRadius="10">
+                            
+                              <Image Source="{Binding Source}"/> 
+                            
+                        </Frame>
+                    </ContentView>
+                </DataTemplate>
+            </cards:CubeView.ItemTemplate>
+        </cards:CubeView>
+    </StackLayout>
     
     
 </ContentPage>

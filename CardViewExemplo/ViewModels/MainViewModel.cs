@@ -10,20 +10,7 @@ namespace CardViewExemplo.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public MainViewModel()
-        {
-            Views = new ObservableCollection<View>()
-            {
-                new Xamarin.Forms.Image() { Source = "bertuzzi.jpg",  Aspect = Aspect.AspectFill },
-                new  Xamarin.Forms.Image() { Source = "bertuzzi2.jpg",  Aspect = Aspect.AspectFill },
-                new  Xamarin.Forms.Image() { Source = "bertuzzi3.jpg", Aspect = Aspect.AspectFill }
-            };
-
-            PositionCommand = new Command(() =>
-            {
-                Debug.WriteLine("Posição selecionada.");
-            });
-        }
+        public ObservableCollection<object> Items { get; }
 
         int _position;
         public int Position
@@ -52,6 +39,31 @@ namespace CardViewExemplo.ViewModels
                 return _views;
             }
         }
+
+
+        public MainViewModel()
+        {
+            Views = new ObservableCollection<View>()
+            {
+                new Xamarin.Forms.Image() {  Source = "bertuzzi.jpg",  Aspect = Aspect.AspectFill },
+                new  Xamarin.Forms.Image() { Source = "bertuzzi2.jpg",  Aspect = Aspect.AspectFill },
+                new  Xamarin.Forms.Image() { Source = "bertuzzi3.jpg", Aspect = Aspect.AspectFill }
+            };
+
+            Items = new ObservableCollection<object>
+            {
+                new { Source = "bertuzzi.jpg", Color = Color.Red, Title = "Primeira" },
+                new { Source = "bertuzzi2.jpg",  Color = Color.Green, Title = "Segunda" },
+                new { Source = "bertuzzi3.jpg",  Color = Color.Gold, Title = "Terceira" }
+            };
+
+            PositionCommand = new Command(() =>
+            {
+                Debug.WriteLine("Posição selecionada.");
+            });
+        }
+
+      
 
         public Command PositionCommand { protected set; get; }
 
